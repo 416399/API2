@@ -1,71 +1,70 @@
-<!DOCTYPE html> 
-<html> 
-<head> 
-<title>Patrick Rothfuss</title> 
-<link rel="stylesheet" type="text/css" href="Theme3.css"> 
-<script src="p5/p5.js"></script> 
-<script > 
-var weather; 
-function setup(){ 
-createCanvas(500,500); 
-loadJSON('http://api.openweathermap.org/data/2.5/weather?q=madison,3166&appid=cea0d325cc34c599ddffe33888ca963c&units=metric', gotData); 
-} 
- 
-function gotData(data){ 
-//print(data); 
-weather = data 
-} 
- 
-function draw() { 
-background(0); 
-if (weather) { 
-ellipse(100, 100, weather.main.temp, weather.main.temp); 
-ellipse (300, 100, weather.main.humidity, weather.main.humidity); 
-} 
-} 
- 
- 
- 
-</script> 
-</head> 
-<body onload="setup();"> 
- 
- 
- 
-<p id="demo" class="">Click here to see the weather</p> 
- 
-<script> 
-document.getElementById("demo").onclick = function() {myFunction()}; 
- 
-function myFunction() { 
-console.log(weather.main); 
- 
- 
- // document.getElementById("demo").innerHTML = "temp: ",weather.main.temp  "humidity: ",weather.main.humidity ; 
-  document.getElementById("demo").innerHTML =  'Temp: ' + weather.main.temp + 
-												' description: ' + weather.weather[0].description + 
-												' name: ' + weather.name;  
-} 
-</script> 
- 
-<br> 
- 
-<iframe width="350" height="430" allow="microphone;"  
-src="https://console.dialogflow.com/api-client/demo/embedded/cd8229ba-55be-434b-a440-5a7acb31d8eb" 
-></iframe> 
- 
- 
-<a class="twitter-timeline" data-width="500" data-height="1000" href="https://twitter.com/PatrickRothfuss?ref_src=twsrc%5Etfw">Tweets by PatrickRothfuss</a>  
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
-<!-- 
-https://api.twitter.com/1.1/search/tweets.json 
-<!-- 
-<br> 
-<!-- 
-<iframe width="350" height="430" allow="microphone;"  
-src="https://console.dialogflow.com/api-client/demo/embedded/cd8229ba-55be-434b-a440-5a7acb31d8eb" 
-></iframe>--> 
- 
-<br> 
-</body> 
+<!DOCTYPE html>
+<html>
+<head>
+<title>Patrick Rothfuss</title>
+<link rel="stylesheet" type="text/css" href="Theme3.css">
+<script src="p5/p5.js"></script>
+<script >
+var weather;
+function setup(){
+createCanvas(500,500);
+loadJSON('http://api.openweathermap.org/data/2.5/weather?q=madison,3166&appid=cea0d325cc34c599ddffe33888ca963c&units=metric', gotData);
+}
+
+function gotData(data){
+//print(data);
+weather = data; 
+  document.getElementById("demo").innerHTML =  'What the weather is like:' +
+												'<br><br>Temperature: ' + weather.main.temp +
+												'<br>Description: ' + weather.weather[0].description +
+												'<br>Place: ' + weather.name; 
+}
+/*
+function draw() {
+background(0);
+if (weather) {
+ellipse(100, 100, weather.main.temp, weather.main.temp);
+ellipse (300, 100, weather.main.humidity, weather.main.humidity);
+}
+}
+*/
+
+</script>
+</head>
+<body  onload="setup();"  >
+
+<br><br>
+
+<div >
+<ul>
+<li style="width:33%" >
+<iframe  height="500" width="100%" allow="microphone;" 
+src="https://console.dialogflow.com/api-client/demo/embedded/cd8229ba-55be-434b-a440-5a7acb31d8eb"
+></iframe>
+</li>
+<li style="width:33%">
+<p class="text">This is a website to keep up to date with current news about Patrick Rothfuss</p>
+<p id="demo" class="text" align="center" onload="myFunction();">weather</p>
+
+</li>
+<li style="width:33%" align="right">
+<a class="twitter-timeline"  data-height="500" href="https://twitter.com/PatrickRothfuss?ref_src=twsrc%5Etfw">Tweets by PatrickRothfuss</a> 
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</li>
+</ul>
+</div>
+
+<!--
+https://api.twitter.com/1.1/search/tweets.json
+<!--
+<br>
+<!--
+<iframe width="350" height="430" allow="microphone;" 
+src="https://console.dialogflow.com/api-client/demo/embedded/cd8229ba-55be-434b-a440-5a7acb31d8eb"
+></iframe>-->
+
+<br>
+
+</body>
 </html>

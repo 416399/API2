@@ -2,10 +2,50 @@
 <html> 
 <head> 
 <title>Patrick Rothfuss</title> 
-</head> 
-<body> 
+<script src="p5/p5.js"></script> 
+<script > 
+var weather; 
+function setup(){ 
+createCanvas(500,500); 
+loadJSON('http://api.openweathermap.org/data/2.5/weather?q=madison,3166&appid=cea0d325cc34c599ddffe33888ca963c&units=metric', gotData); 
+} 
  
-
+function gotData(data){ 
+//print(data); 
+weather = data 
+} 
+ 
+function draw() { 
+background(0); 
+if (weather) { 
+ellipse(100, 100, weather.main.temp, weather.main.temp); 
+ellipse (300, 100, weather.main.humidity, weather.main.humidity); 
+} 
+} 
+ 
+ 
+ 
+</script> 
+</head> 
+<body onload="setup();"> 
+ 
+ 
+ 
+<p id="demo" class="">Click here to see the weather</p> 
+ 
+<script> 
+document.getElementById("demo").onclick = function() {myFunction()}; 
+ 
+function myFunction() { 
+console.log(weather.main); 
+ 
+ 
+ // document.getElementById("demo").innerHTML = "temp: ",weather.main.temp  "humidity: ",weather.main.humidity ; 
+  document.getElementById("demo").innerHTML =  'Temp: ' + weather.main.temp + 
+												' description: ' + weather.weather[0].description + 
+												' name: ' + weather.name;  
+} 
+</script> 
  
 <br> 
  
